@@ -1,8 +1,13 @@
 /**
  * First attempt at a star field screensaver (in honor of Star Wars).
+ * <p/>
+ * Stars start at center of screen and move outwards at random angles at increasing
+ * speeds to simulate the look of a star field.  As a star moves off the screen it is
+ * replaced by a new star.
  * 
  * TODO: Stars could start from different locations (currently all start at the center)
- *       Deal with occasional flashes (or not)
+ *       Stars could disappear at different locations (currently all go off the edge)
+ *       Deal with occasional white screen flashes
  * 
  * @author A. Jacoby (20 Dec 2015)
  */
@@ -23,7 +28,7 @@ public class StarField {
   private static final int WIN_WIDTH = 1400; // window width (pixels)
   private static final int WIN_HEIGHT = 800; // window height (pixels)
   
-  /** Defaults to 100 stars, but number may be specified on the command line. */
+  /** Defaults to 1000 stars, but number may be specified on the command line. */
   public static void main(String[] args) throws Exception {
     int stars = (args.length > 0)? Integer.parseInt(args[0]) : 1000;
     showField(stars);
@@ -91,7 +96,7 @@ public class StarField {
   /** Draws star. */
   private static void drawStar(double[] starInfo) {
     double percentOfTrip = hypot(starInfo[X], starInfo[Y])/FIELD_RADIUS;
-    StdDraw.setPenRadius(MIN_SIZE * starInfo[A]*percentOfTrip);
+    StdDraw.setPenRadius(MIN_SIZE * starInfo[A]*percentOfTrip*percentOfTrip);
     StdDraw.point(starInfo[X], starInfo[Y]);
   }
   
