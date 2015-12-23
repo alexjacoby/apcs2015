@@ -20,8 +20,8 @@ public class StarField {
   // Misc constants
   private static final double FIELD_RADIUS = 100; // Radius of star field
   private static final double MIN_SIZE = 0.005; // Minimum pen size to draw a star
-  private static final int WIN_WIDTH = 1400; // pixels
-  private static final int WIN_HEIGHT = 800; // pixels
+  private static final int WIN_WIDTH = 1400; // window width (pixels)
+  private static final int WIN_HEIGHT = 800; // window height (pixels)
   
   /** Defaults to 100 stars, but number may be specified on the command line. */
   public static void main(String[] args) throws Exception {
@@ -61,7 +61,7 @@ public class StarField {
     }
   }
 
-  /** Initialize new slope, start time, speed, size, and coordinates for a star. */
+  /** Initialize new angle, start time, speed, size, and coordinates for a star. */
   private static void birthNewStar(double[] starInfo, int t) {
     starInfo[TH] = 2*Math.PI*Math.random(); // angle of star's path from origin
     starInfo[T0] = t + 200 * Math.random(); // start time (randomly chosen from next 2 seconds)
